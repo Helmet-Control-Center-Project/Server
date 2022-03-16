@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/api")
 public class HelmetController {
 
     private final HelmetService helmetService;
@@ -17,9 +17,9 @@ public class HelmetController {
         this.helmetService = helmetService;
     }
 
-    @PostMapping("http://125.177.137.35:8080/helmet")
+    @PostMapping("/helmet")
     public Helmet infoInsert(@RequestBody Helmet helmet){
-        helmetService.InfoInsert(helmet);
+        helmetService.infoInsert(helmet);
         return helmet;
     }
 }

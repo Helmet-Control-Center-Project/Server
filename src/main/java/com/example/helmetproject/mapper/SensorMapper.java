@@ -5,7 +5,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface SensorMapper {
-
-    ShockSensor shockSensor(ShockSensor shockSensor);
-
+    void shockSensor(ShockSensor shockSensor);
 }

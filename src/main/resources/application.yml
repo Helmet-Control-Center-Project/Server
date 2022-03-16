@@ -1,8 +1,8 @@
 spring:
-  port: 8080
-datasource:
+ port: 8080
+ datasource:
    driver-class-name: org.mariadb.jdbc.Driver
-   url: jdbc:mysql://localhost:3306/helmet
+   url: jdbc:mysql://125.177.137.35:3306/helmet
    username: root
    password: mariadb
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/api")
 public class SensorController {
 
     private final SensorService sensorService;
@@ -17,9 +17,8 @@ public class SensorController {
         this.sensorService = sensorService;
     }
 
-    @PostMapping("http://125.177.137.35:8080")
-    public ShockSensor shockSensor(@RequestBody ShockSensor data){
+    @PostMapping("/shocksensor")
+    public void shockSensor(@RequestBody ShockSensor data){
         sensorService.shockSensor(data);
-        return data;
     }
 }

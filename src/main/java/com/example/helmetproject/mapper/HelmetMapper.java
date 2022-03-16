@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface HelmetMapper {
 
     //helmet 데이터 추가
-    Helmet infoInsert(Helmet helmet);
+    void infoInsert(Helmet helmet);
 
 }

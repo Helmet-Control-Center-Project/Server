@@ -13,7 +13,7 @@ public class SensorService {
         this.sensorMapper = sensorMapper;
     }
 
-    public ShockSensor shockSensor(ShockSensor shockSensor){
-       return sensorMapper.shockSensor(shockSensor);
+    public void shockSensor(ShockSensor shockSensor){
+       sensorMapper.shockSensor(shockSensor);
     }
 }
