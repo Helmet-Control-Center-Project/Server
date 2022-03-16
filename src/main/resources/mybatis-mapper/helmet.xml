@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.userserivce.mapper.UserMapper">
+    <insert id="infoInsert" parameterType="com.example.helmetproject.dto.Helmet">
+        INSERT INTO user (
+                          helmet_id,
+                          helmet_name,
+                          helmet_make_date,
+                          helmet_buy_date
+        )
+        values (#{helmetId},
+                #{helmetModelName},
+                #{helmetMakeDate},
+                #{helmetBuyDate}
+               )
+    </insert>
+</mapper>
