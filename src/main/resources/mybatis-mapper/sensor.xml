@@ -4,12 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.helmetproject.mapper.SensorMapper">
+    <!--  충격 감지 센서  -->
     <insert id="shockSensor" parameterType="com.example.helmetproject.dto.ShockSensor">
-        INSERT INTO shocksensor(helmet_Id,
+        INSERT INTO shocksensor(
+                                helmet_Id,
                                 result
         )
         values (#{helmetId},
                 #{result}
                )
+    </insert>
+    <!--  착용 감지 센서  -->
+    <insert id="wearingSensor" parameterType="com.example.helmetproject.dto.WearingSensor">
+        INSERT INTO wearingsensor(
+                                  helmet_id,
+                                  wearing_condition,
+                                  date
+        )values(
+                #{helmetId},
+                #{wearingCondition}
+                #{date}
+                       )
     </insert>
 </mapper>

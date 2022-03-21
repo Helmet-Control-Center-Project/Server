@@ -6,5 +6,6 @@ import lombok.Data;
 public class ShockSensor {
 
     private String helmetId;
+    private Integer level;
     private Integer result;
 }
