@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.helmetproject.mapper.UserMapper">
+
+    <!--  노동자 등록  -->
+    <insert id="createUser" parameterType="com.example.helmetproject.dto.User">
+        INSERT INTO user (
+            user_id,
+            user_ssn,
+            user_name,
+            user_department,
+            user_birth,
+            user_last_work_date,
+            user_registration_date
+        )
+        values (#{userId},
+                #{userSsn},
+                #{userName},
+                #{userDepartment},
+                #{userBirth},
+                #{userLastWorkDate},
+                #{userRegistrationDate}
+               )
+    </insert>
+
+    <select id="findUser" parameterType="com.example.helmetproject.dto.User">
+        SELECT *
+        FROM user
+        where user_ssn = #{userSsn}
+    </select>
+
+    <!-- 모든 노동자 조회 -->
+    <select id="findAll" parameterType="com.example.helmetproject.dto.User" resultType="Map">
+        SELECT *
+        FROM user
+    </select>
+
+</mapper>

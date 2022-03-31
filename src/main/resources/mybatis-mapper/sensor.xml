@@ -18,8 +18,8 @@
     <insert id="wearingSensor" parameterType="com.example.helmetproject.dto.WearingSensor">
         INSERT INTO wearingsensor(
                                   helmet_id,
-                                  wearing_condition,
-                                  date
+                                  wear_condition,
+                                  create_date
         )values(
                 #{helmetId},
                 #{wearingCondition}

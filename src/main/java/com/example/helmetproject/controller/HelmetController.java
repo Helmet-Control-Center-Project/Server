@@ -19,6 +19,7 @@ public class HelmetController {
 
     @PostMapping("/helmet")
     public Helmet infoInsert(@RequestBody Helmet helmet){
+
         helmetService.infoInsert(helmet);
         return helmet;
     }
