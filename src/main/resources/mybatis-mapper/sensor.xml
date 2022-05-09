@@ -8,10 +8,12 @@
     <insert id="shockSensor" parameterType="com.example.helmetproject.dto.ShockSensor">
         INSERT INTO shocksensor(
                                 helmet_Id,
-                                result
+                                shock_data_left,
+                                shock_data_right
         )
         values (#{helmetId},
-                #{result}
+                #{shockDataLeft},
+                #{shockDataRight}
                )
     </insert>
     <!--  착용 감지 센서  -->
@@ -22,7 +24,7 @@
                                   create_date
         )values(
                 #{helmetId},
-                #{wearingCondition}
+                #{wearingCondition},
                 #{date}
                        )
     </insert>

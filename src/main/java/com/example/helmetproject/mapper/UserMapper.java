@@ -1,6 +1,7 @@
 package com.example.helmetproject.mapper;
 
 import com.example.helmetproject.dto.User;
+import com.example.helmetproject.dto.UserWorkHistory;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface UserMapper {
 
     List<User> findAll();
 
+    UserWorkHistory userWork(UserWorkHistory userWorkHistory);
 }

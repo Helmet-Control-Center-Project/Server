@@ -5,6 +5,16 @@
 
 <mapper namespace="com.example.helmetproject.mapper.UserMapper">
 
+    <resultMap id="UserInfo" type="com.example.helmetproject.dto.User">
+        <result property="userId" column="user_id"/>
+        <result property="userSsn" column="user_ssn"/>
+        <result property="userName" column="user_name"/>
+        <result property="userDepartment" column="user_department"/>
+        <result property="userBirth" column="user_birth"/>
+        <result property="userLastWorkDate" column="user_last_work_date"/>
+        <result property="userRegistration" column="user_registration"/>
+    </resultMap>
+
     <!--  노동자 등록  -->
     <insert id="createUser" parameterType="com.example.helmetproject.dto.User">
         INSERT INTO user (
@@ -26,7 +36,8 @@
                )
     </insert>
 
-    <select id="findUser" parameterType="com.example.helmetproject.dto.User">
+    <!-- 특정 노동자 조회 -->
+    <select id="findUser" resultMap="UserInfo">
         SELECT *
         FROM user
         where user_ssn = #{userSsn}
@@ -37,5 +48,21 @@
         SELECT *
         FROM user
     </select>
+
+    <!-- 노동자 출근 등록 -->
+    <insert id="userWork" parameterType="com.example.helmetproject.dto.UserWorkHistory">
+        insert into user_work(
+                              user_id,
+                              user_name,
+                              user_department,
+                              user_work_date
+        )values (
+                 #{userId},
+                 #{userName},
+                 #{userDepartment},
+                 #{userWorkDate}
+                        )
+
+    </insert>
 
 </mapper>

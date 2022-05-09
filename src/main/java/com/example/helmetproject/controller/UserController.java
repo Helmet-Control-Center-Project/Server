@@ -1,6 +1,7 @@
 package com.example.helmetproject.controller;
 
 import com.example.helmetproject.dto.User;
+import com.example.helmetproject.dto.UserWorkHistory;
 import com.example.helmetproject.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,12 @@ public class UserController {
     public ResponseEntity<List<User>> findAll(){
         List<User> data = userService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(data);
+    }
+
+    @PostMapping("/user/work")
+    public ResponseEntity userWork(@RequestBody UserWorkHistory userWorkHistory){
+        userService.userWork(userWorkHistory);
+        return ResponseEntity.status(HttpStatus.OK).body("Ok");
     }
 
 

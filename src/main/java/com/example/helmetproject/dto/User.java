@@ -22,6 +22,9 @@ public class User {
     /* 노동자 생년월일 */
     private LocalDate userBirth;
 
+    /* 노동자 핸드폰 번호 */
+    private String userPhoneNumber;
+
     /* 노동자 마지막 출근일 */
     private LocalDate userLastWorkDate;
 

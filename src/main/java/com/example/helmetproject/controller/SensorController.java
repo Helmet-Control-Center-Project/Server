@@ -22,13 +22,10 @@ public class SensorController {
         sensorService.wearingSensor(wearingSensor);
     }
 
-    /* 작업 미완료 */
-    @PostMapping("/shocksensor/{level}")
+    /* 작업 완료 */
+    @PostMapping("/shockSensor")
     public void shockSensor(
-
-            @PathVariable("level")Integer level,
             @RequestBody ShockSensor shockSensor){
-
         sensorService.shockSensor(shockSensor);
     }
 
@@ -39,7 +36,6 @@ public class SensorController {
         /* 데이터 수정 필요 */
         ShockSensor shockSensor = null;
         return shockSensor;
-
     }
 
 
