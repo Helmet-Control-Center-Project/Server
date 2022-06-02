@@ -10,13 +10,20 @@
             helmet_id,
             helmet_name,
             helmet_make_date,
-            helmet_buy_date
+            helmet_buy_date,
+            helmet_price
         )
         values (#{helmetId},
                 #{helmetModelName},
                 #{helmetMakeDate},
-                #{helmetBuyDate}
+                #{helmetBuyDate},
+                #{helmetPrice}
                )
     </insert>
+
+    <select id="getHelmetData" parameterType="com.example.helmetproject.dto.User" resultType="java.util.HashMap">
+        SELECT *
+        FROM helmets
+    </select>
 
 </mapper>

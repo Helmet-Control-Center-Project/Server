@@ -3,6 +3,7 @@ package com.example.helmetproject.controller;
 import com.example.helmetproject.dto.User;
 import com.example.helmetproject.dto.UserWorkHistory;
 import com.example.helmetproject.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@Slf4j
 @RequestMapping("/api")
 public class UserController {
 
@@ -23,8 +25,9 @@ public class UserController {
     public ResponseEntity createUser(
             @RequestBody User user){
         try {
-        userService.createUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body("create OK");
+            log.info(user.toString());
+            userService.createUser(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body("create OK");
         } catch (NullPointerException nullPointerException) {
             return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body(nullPointerException);
         }
@@ -39,6 +42,7 @@ public class UserController {
     @GetMapping("/user/findAll")
     public ResponseEntity<List<User>> findAll(){
         List<User> data = userService.findAll();
+        log.info(data.toString());
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
 

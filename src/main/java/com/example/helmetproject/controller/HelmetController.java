@@ -2,10 +2,9 @@ package com.example.helmetproject.controller;
 
 import com.example.helmetproject.dto.Helmet;
 import com.example.helmetproject.service.HelmetService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -17,10 +16,18 @@ public class HelmetController {
         this.helmetService = helmetService;
     }
 
-    @PostMapping("/helmet")
+    @PostMapping("/helmet/registrationr")
     public Helmet infoInsert(@RequestBody Helmet helmet){
-
         helmetService.infoInsert(helmet);
         return helmet;
+    }
+
+    @GetMapping("/helmet")
+    public List<Helmet> getHelmetData(){
+        List<Helmet> helmets = null;
+        helmets = helmetService.getHelmetData();
+        return helmets;
+
+
     }
 }

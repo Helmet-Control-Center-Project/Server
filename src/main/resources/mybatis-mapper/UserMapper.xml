@@ -7,12 +7,12 @@
 
     <resultMap id="UserInfo" type="com.example.helmetproject.dto.User">
         <result property="userId" column="user_id"/>
-        <result property="userSsn" column="user_ssn"/>
         <result property="userName" column="user_name"/>
-        <result property="userDepartment" column="user_department"/>
+        <result property="userSsn" column="user_ssn"/>
         <result property="userBirth" column="user_birth"/>
-        <result property="userLastWorkDate" column="user_last_work_date"/>
-        <result property="userRegistration" column="user_registration"/>
+        <result property="userPhoneNumber" column="user_phone_number"/>
+        <result property="userBloodType" column="user_blood_type"/>
+        <result property="userWorkLocation" column="user_work_location"/>
     </resultMap>
 
     <!--  노동자 등록  -->
@@ -21,18 +21,18 @@
             user_id,
             user_ssn,
             user_name,
-            user_department,
+            user_work_location,
             user_birth,
-            user_last_work_date,
-            user_registration_date
+            user_blood_type,
+            user_phone_number
         )
         values (#{userId},
                 #{userSsn},
                 #{userName},
-                #{userDepartment},
+                #{userWorkLocation},
                 #{userBirth},
-                #{userLastWorkDate},
-                #{userRegistrationDate}
+                #{userBloodType},
+                #{userPhoneNumber}
                )
     </insert>
 

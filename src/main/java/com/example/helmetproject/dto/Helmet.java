@@ -11,4 +11,5 @@ public class Helmet {
     private String helmetModelName;
     private LocalDate helmetMakeDate;
     private LocalDate helmetBuyDate;
+    private Integer helmetPrice;
 }
