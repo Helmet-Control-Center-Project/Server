@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.helmetproject.mapper.HelmetMapper">
     <!--  헬멧 등록  -->
-    <insert id="infoInsert" parameterType="com.example.helmetproject.dto.User">
+    <insert id="infoInsert" parameterType="com.example.helmetproject.dto.Helmet">
         INSERT INTO helmets (
             helmet_id,
             helmet_name,
@@ -21,7 +21,7 @@
                )
     </insert>
 
-    <select id="getHelmetData" parameterType="com.example.helmetproject.dto.User" resultType="java.util.HashMap">
+    <select id="getHelmetData" parameterType="com.example.helmetproject.dto.Helmet" resultType="java.util.HashMap">
         SELECT *
         FROM helmets
     </select>

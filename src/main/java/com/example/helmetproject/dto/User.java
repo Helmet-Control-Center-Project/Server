@@ -28,4 +28,7 @@ public class User {
     /* 노동자 근무 위치 */
     private String userWorkLocation;
 
+    /* 노동자 사용 헬멧 */
+    private String userWorkCondition;
+
 }

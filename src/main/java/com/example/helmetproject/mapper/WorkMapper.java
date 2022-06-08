@@ -20,5 +20,5 @@ public interface WorkMapper {
 
     void helmetDeleteConditionUpdate();
 
-    void deleteWorker(String helmetId);
+    void deleteWorker(Integer userId);
 }

@@ -39,7 +39,7 @@
 
     <delete id="deleteWorker">
         DELETE from workinguser
-        WHERE helmet_id = #{helmetId}
+        WHERE user_id = #{userId}
     </delete>
 
     <update id="userDeleteConditionUpdate">

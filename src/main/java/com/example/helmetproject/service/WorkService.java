@@ -2,11 +2,12 @@ package com.example.helmetproject.service;
 
 import com.example.helmetproject.dto.WorkUserDto;
 import com.example.helmetproject.mapper.WorkMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class WorkService {
 
@@ -23,10 +24,11 @@ public class WorkService {
         workMapper.inputWorker(workUserDto);
     }
 
-    public void deleteWorker(String helmetId){
+    public void deleteWorker(Integer userId){
         workMapper.helmetDeleteConditionUpdate();
         workMapper.userDeleteConditionUpdate();
-        workMapper.deleteWorker(helmetId);
+        log.info("service ----- " + userId);
+        workMapper.deleteWorker(userId);
     }
 
     public List<WorkUserDto> getWorker() {

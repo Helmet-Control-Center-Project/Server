@@ -1,169 +1,100 @@
 let helmetData;
 let workerData;
-var list_save = new Array();
+let deletWork;
+let roadData;
 function work_Instruct()
 
 {
 
     let userData;
-    var helmet_id = document.getElementById("helmet_id").value;
-    var helmetusing = document.getElementById("userNumber").value;
-    var userNumber =document.getElementById("userNumber").value;
-    var userHelmet = document.getElementById("helmet_id").value;
-    
-    var real_using;
-    let po_int;
-    let pointer;
-     axios.get
-                ("http://localhost:8080/api/helmet")
-                    .then(function (response) {
-                        helmetData=response.data;
-                        console.log(response.data);
-                       
-                    })
-                    .catch(function (error){
-
-                        console.log(error);
-                    });
-    for(let i = 0; i < helmetData.length; i++)
-    {
-            if(helmetData[i].helmet_id.equals(helmet_id))
-                {
-                    if(helmetData[i].helmetusing.equals("no"))
-                    {
-                        po_int = 1;
-                        pointer = i;
-                        break;
-                    }
-                    else
-                        {
-                            po_int = -1;
-                            real_using = helmetData[i].helmetusing;
-                            break;
-                        }
-                }
-            else {
-                
-            }
-            
-        }
-    
-    axios.get
-                ("http://localhost:8080/api/user/findall")
-                    .then(function (response) {
-                        workerData=response.data;
-                        console.log(response.data);
-                    })
-                    .catch(function (error){
-
-                        console.log(error);
-                    });
-    
- for(let i =0; i <workerData.length; i++)
-        {
-            if(workerData[i].userNumber.equals(helmetusing))
-                {
-                    if(workerData[i].userHelmet.equals("no"))
-                    {
-                        po_int = 1;
-                        pointer = i;
-                        break;
-                    }
-                    else
-                        {
-                            po_int = -2;
-                            real_using = workerData[i].userHelmet;
-                            break;
-                        }
-                }
-            else {
-                
-            }
-            
-        }
-
-    if(po_int==1)
-        {
-  axios.post("http://localhost:8080/api/helmet",
+    var helmetId = document.getElementById("helmet_id").value;
+    var userId =document.getElementById("userNumber").value;
+    //var real_using;
+    //let po_int;
+    //let pointer;
+     
+  axios.post(" http://localhost:8080/api/worker",
               {
-        helmet_id:helmet_id,
-        helmetusing:helmetusing
+        helmetId:helmetId,
+        userId:userId
     });
-               axios.post("http://localhost:8080/api/user",
-              {
-        userNumber:userNumber,
-        userHelmet:userHelmet
-        
-        
-    });
-            alert(helmet_id+" 헬멧에 " + helmetusing + " 노동자 등록 완료.");
-        }
+               
+    alert(helmetId+" 헬멧에 " + userId + " 노동자 등록 완료.");
+     
+    /*
     else if(po_int==-1)
         {
-            alert("작업지시 실패!! " +"\n (" + helmet_id +" 헬멧이 사용중입니다. \n Error: "+"real_using )");
+            alert("작업지시 실패!! " +"\n (" + helmetId +" 헬멧이 사용중입니다. \n Error: "+"real_using )");
         }
     else if(po_int==-2)
         {
             alert("작업지시 실패!! " +"\n ( 노동자 " + userNumber +" 가 작업중 입니다. \n Error: "+"real_using )");
         }
-}
-
-
-function work_Delete() {
-	
-    var sel_list = document.getElementById('works');
-	var index = obj.selectedIndex;
-	var value = obj.options[index].value;
-	var text = obj.options[index].text;
-	console.log( 'index=', index, 'value=', value, 'text=', text );
-    
-    
-    for(let i =0; i< list_save.length; i++)
-        {
-        let del_id = list_save[i];
-    //여기가 삭제하는 부분 ~~~~~~~~~~~~~~~~~
-     axios.post("http://localhost:8080/api/helmet/삭제삭제",
-              {
-        del_id:delid
-    });
-        }
-   //~~~~~~~~~~~~~~~~~~~
-
+        */
 }
 
 function work_load()
 {
-    let workerDData;
-    let usingHelmetID = new Array();
-    let usingworkerData = new Array();
+    axios.get
+    ("http://localhost:8080/api/helmet")
+        .then(function (response) {
+            helmetData=response.data;
+            console.log(response.data);
+        })
+        .catch(function (error){
+
+            console.log(error);
+        });
+    axios.get
+    ("http://localhost:8080/api/user/findAll")
+    .then(function (response) {
+        workerData=response.data;
+        console.log(response.data);
+    })
+    .catch(function (error){
+
+        console.log(error);
+    });
       axios.get
                 ("http://localhost:8080/api/worker")
                     .then(function (response) {
-                        workerDData = response.data;
+                        roadData=response.data;
                         console.log(response.data);
                     })
                     .catch(function (error){
 
                         console.log(error);
                     });
-    
-    for(let i =0; i < 1; i++)
-        {
-            workerDData.push(workerDData[i].helmetId);
-            usingworkerData.push(workerDData[i].userId);
-        }
     var select_work = document.getElementById('works');
-    for(let i = 0; i < usingHelmetID.length; i++)
+    for(let i = 0; i < roadData.length; i++)
         {
-            let select_list = 
-                `<option value='${usingHelmetID[i]}'>
-        ${usingHelmetID[i]+" & "+usingworkerData[i]}</option>`
-
-            list_save[i]=usingHelmetID[i];
-            select_work.innerHTML += select_list;
+            // <option value='apple'>작업작업</option> 
+             let select_list = 
+                `<option value='${roadData[i].user_id}'>
+        ${roadData[i].helmet_id} & ${roadData[i].user_id}
+    </option>`
+              select_work.innerHTML += select_list;
         }
+}
+
+function work_selected()
+{
+    var sel_list = document.getElementById('works');
+	var index = sel_list.selectedIndex;
+	deletWork = sel_list.options[index].value;
+	var text = sel_list.options[index].text;
+	console.log( 'index=', index, 'value=', deletWork, 'text=', text );
+}
+
+function work_Delete() {
+    let userId = deletWork;
+    console.log( "helmetId" + userId );
+    console.log( "deletWork" + deletWork );
+     axios.get("http://localhost:8080/api/worker/delete/" + userId);
 
 }
+
+
 
 
 

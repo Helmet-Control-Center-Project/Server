@@ -10,8 +10,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<script type="text/javascript" src="assets/js/inputwork.js">
-		</script>
+        <script type="text/javascript" src="assets/js/inputwork.js"></script>
+		
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         div{
@@ -113,35 +113,30 @@
     
     <tr align = "center" bgcolor="skybule">
     
-    <td><strong>ID<br>NUMBER</strong></td>
+   <td><strong>ID<br>NUMBER</strong></td>
 	<td><strong>Model<br>Name</strong></td>
 	<td><strong>Manufacture<br>Date</strong></td>
 	<td><strong>Purchase<br>Date</strong></td>
 	<td><strong>Helmet<br>Price</strong></td>
-	<td><strong>Use</strong></td>
+	<td><strong>　Use　</strong></td>
     </tr>
-    
 
     <tbody id="helmet_inf_list">
     <!-- 삽입되는 헬멧 리스트 -->
 
     </tbody>
-       
         <script>
-           // let helmetData;
+            
 
             // http://localhost:8080/api/helmet
             function load_Helmet_Inf()
             {
-
-
-
                 axios.get
                 ("http://localhost:8080/api/helmet")
                     .then(function (response) {
                         helmetData=response.data;
                         console.log(response.data);
-                        makeList();
+                        makeList1();
                     })
                     .catch(function (error){
 
@@ -149,7 +144,7 @@
                     });
 
             }
-            function makeList() {
+            function makeList1() {
                 let helmetlist_tbody = document.getElementById('helmet_inf_list');
                 if(helmetlist_tbody.rows.length <1) {
                     for (let i = 0; i < helmetData.length; i++) {
@@ -165,9 +160,9 @@
                         let helmetid = helmetData[i].helmet_id;
                         let helmetnamed = helmetData[i].helmet_name;
                         let helmetmaked = helmetData[i].helmet_make_date;
-                        let helmetbuyed = helmetData[i].helmet_but_date;
+                        let helmetbuyed = helmetData[i].helmet_buy_date;
                         let helmetpriced = helmetData[i].helmet_price;
-                        let helmetusing = helmetData[i].helmetusing;
+                        let helmetusing = helmetData[i].helmet_condition;
                         //--
                         cell1.innerHTML = helmetid;
                         cell2.innerHTML = helmetnamed;
@@ -175,8 +170,7 @@
                         cell4.innerHTML = helmetbuyed;
                         cell5.innerHTML = helmetpriced;
                         cell6.innerHTML = helmetusing;
-
-                    }
+                       }
                 }
                 else if(helmetlist_tbody>1)
                 {
@@ -213,10 +207,10 @@
     <tr align = "center" bgcolor="skybule">
     <td><strong>Worker<br>Number</strong></td>
     <td><strong>Name</strong></td>
-	<td><strong>　　Ssn　　　　</strong></td>
+	<td><strong>　　　Ssn　　　</strong></td>
 	<td><strong>BrithDay</strong></td>
 	<td><strong>Phone<br>Number</strong></td>
-	<td><strong>Blood<br>Type</strong></td>
+	<td><strong>BloodType</strong></td>
 	<td><strong>Work<br>Location</strong></td>
 	<td><strong>Using<br>Helmet</strong></td>
     </tr>
@@ -226,16 +220,13 @@
 
     </tbody>
         <script>
-            //let workerData;
+          
 
             // http://localhost:8080/api/helmet
             function Load_Worker_Inf()
             {
-
-
-
                 axios.get
-                ("http://localhost:8080/api/user/findall")
+                ("http://localhost:8080/api/user/findAll")
                     .then(function (response) {
                         workerData=response.data;
                         console.log(response.data);
@@ -252,8 +243,8 @@
                 if(workerlist_tbody.rows.length <1) {
                     for (let i = 0; i < workerData.length; i++) {
 
-                         let row = workerlist_tbody.insertRow(workerlist_tbody.rows.length);
-                        let cell1 = row.insertCell(0);
+                        let row = workerlist_tbody.insertRow(workerlist_tbody.rows.length);
+                       let cell1 = row.insertCell(0);
                         let cell2 = row.insertCell(1);
                         let cell3 = row.insertCell(2);
                         let cell4 = row.insertCell(3);
@@ -262,24 +253,25 @@
                         let cell7 = row.insertCell(6);
                         let cell8 = row.insertCell(7);
                         //------
-                        let userNumber = workerData[i].userNumber;
-                        let userName = workerData[i].userName;
-                        let userSsn = workerData[i].userSsn;
-                        let userBirth = workerData[i].userBirth;
-                        let userPhoneNumber = workerData[i].userPhoneNumber;
-                        let userBloodType = workerData[i].userBloodType;
-                        let userWorkLocation = workerData[i].userWorkLocation;
-                        let userHelmet = workerData[i].userHelmet;
+                        let user_id = workerData[i].user_id;
+                        let user_name = workerData[i].user_name;
+                        let user_ssn = workerData[i].user_ssn;
+                        let user_birth = workerData[i].user_birth;
+                        let user_phone_number = workerData[i].user_phone_number;
+                        let user_blood_type = workerData[i].user_blood_type;
+                        let user_work_location = workerData[i].user_work_location;
+                        let user_work_condition = workerData[i].user_work_condition;
                         //--
-                        cell1.innerHTML = userNumber;
-                        cell2.innerHTML = userName;
-                        cell3.innerHTML = userSsn;
-                        cell4.innerHTML = userBirth;
-                        cell5.innerHTML = userPhoneNumber;
-                        cell6.innerHTML = userBloodType;
-                        cell7.innerHTML = userWorkLocation;
-                        cell8.innerHTML = userHelmet;
+                        cell1.innerHTML = user_id;
+                        cell2.innerHTML = user_name;
+                        cell3.innerHTML = user_ssn;
+                        cell4.innerHTML = user_birth;
+                        cell5.innerHTML = user_phone_number;
+                        cell6.innerHTML = user_blood_type;
+                        cell7.innerHTML = user_work_location;
+                        cell8.innerHTML = user_work_condition;
 
+          
                     }
                 }
                 else if(workerlist_tbody>1)
@@ -317,8 +309,8 @@ id="userNumber"></p>
 <p align="right"><input type="button" value="INSTRUCT" style = "float:right" onclick="work_Instruct();"></p>
 <br><br><br>
 
-<p><strong>[ 작업지시 현황 ]</strong>
-<input type="button" value="LOAD" style = "float:right" onclick="work_load();"><br><br></p>
+<p><strong>[ 작업지시 현황 ]</strong></p>
+<input type="button" value="LOAD" style = "float:right" onclick="work_load();"><br><br>
 <p align ="right"><select id='works' name='works' size='10' onchange='work_selected()' >
 	<option value='' selected>──── S E L E C T ────</option>
 	

@@ -13,6 +13,7 @@
         <result property="userPhoneNumber" column="user_phone_number"/>
         <result property="userBloodType" column="user_blood_type"/>
         <result property="userWorkLocation" column="user_work_location"/>
+        <result property="userWorkCondition" column="user_work_condition"/>
     </resultMap>
 
     <!--  노동자 등록  -->
@@ -24,7 +25,8 @@
             user_work_location,
             user_birth,
             user_blood_type,
-            user_phone_number
+            user_phone_number,
+            user_work_condition
         )
         values (#{userId},
                 #{userSsn},
@@ -32,7 +34,8 @@
                 #{userWorkLocation},
                 #{userBirth},
                 #{userBloodType},
-                #{userPhoneNumber}
+                #{userPhoneNumber},
+                #{userWorkCondition}
                )
     </insert>
 

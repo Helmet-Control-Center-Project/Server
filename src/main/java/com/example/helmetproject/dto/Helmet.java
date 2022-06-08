@@ -12,4 +12,5 @@ public class Helmet {
     private LocalDate helmetMakeDate;
     private LocalDate helmetBuyDate;
     private Integer helmetPrice;
+    private Integer helmetCondition;
 }

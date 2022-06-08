@@ -2,11 +2,13 @@ package com.example.helmetproject.controller;
 
 import com.example.helmetproject.dto.WorkUserDto;
 import com.example.helmetproject.service.WorkService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Slf4j
 @RequestMapping("/api")
 public class WorkController {
 
@@ -26,8 +28,9 @@ public class WorkController {
         return workService.getWorker();
     }
 
-    @GetMapping("/worker/delete/{helmetId}")
-    public void workerDelete(@PathVariable("helmetId")String helmetId){
-        workService.deleteWorker(helmetId);
+    @GetMapping("/worker/delete/{userId}")
+    public void workerDelete(@PathVariable("userId") Integer userId){
+        log.info("Controller ------ " + userId);
+        workService.deleteWorker(userId);
     }
 }

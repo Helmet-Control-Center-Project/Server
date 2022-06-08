@@ -91,9 +91,6 @@
             // http://localhost:8080/api/helmet
             function load_Helmet_Inf()
             {
-
-
-
                 axios.get
                 ("http://localhost:8080/api/helmet")
                     .then(function (response) {
@@ -105,7 +102,6 @@
 
                         console.log(error);
                     });
-
             }
             function makeList() {
                 let helmetlist_tbody = document.getElementById('helmet_inf_list');
@@ -120,19 +116,19 @@
                         let cell5 = row.insertCell(4);
                         let cell6 = row.insertCell(5);
                         //------
-                        let helmetid = helmetData[i].helmet_id;
-                        let helmetnamed = helmetData[i].helmet_name;
-                        let helmetmaked = helmetData[i].helmet_make_date;
-                        let helmetbuyed = helmetData[i].helmet_but_date;
-                        let helmetpriced = helmetData[i].helmet_price;
-                        let helmetusing = helmetData[i].helmet_using;
-                        //--
-                        cell1.innerHTML = helmetid;
-                        cell2.innerHTML = helmetnamed;
-                        cell3.innerHTML = helmetmaked;
-                        cell4.innerHTML = helmetbuyed;
-                        cell5.innerHTML = helmetpriced;
-                        cell6.innerHTML = helmetusing;
+						let helmetid = helmetData[i].helmet_id;
+						let helmetnamed = helmetData[i].helmet_name;
+						let helmetmaked = helmetData[i].helmet_make_date;
+						let helmetbuyed = helmetData[i].helmet_buy_date;
+						let helmetpriced = helmetData[i].helmet_price;
+						let helmetusing = helmetData[i].helmet_condition;
+						//--
+						cell1.innerHTML = helmetid;
+						cell2.innerHTML = helmetnamed;
+						cell3.innerHTML = helmetmaked;
+						cell4.innerHTML = helmetbuyed;
+						cell5.innerHTML = helmetpriced;
+						cell6.innerHTML = helmetusing;
                        }
                 }
                 else if(helmetlist_tbody>1)
