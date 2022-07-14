@@ -11,7 +11,7 @@ public interface UserMapper {
 
     void createUser(User user);
 
-    User findUser(String userSsn);
+    User findUser(Integer userId);
 
     List<User> findAll();
 

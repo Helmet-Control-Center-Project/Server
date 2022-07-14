@@ -88,11 +88,10 @@
         <script>
             let helmetData;
 
-            // http://localhost:8080/api/helmet
-            function load_Helmet_Inf()
-            {
+			function load_Helmet_Inf()
+			{
                 axios.get
-                ("http://localhost:8080/api/helmet")
+                ("http://220.81.42.179:8080/api/helmet")
                     .then(function (response) {
                         helmetData=response.data;
                         console.log(response.data);

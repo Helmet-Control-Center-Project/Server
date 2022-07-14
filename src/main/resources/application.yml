@@ -2,9 +2,9 @@ spring:
  port: 8080
  datasource:
    driver-class-name: org.mariadb.jdbc.Driver
-   url: jdbc:mysql://125.177.137.35:3306/helmet
-   username: root
-   password: mariadb
+   url: jdbc:mysql://220.81.42.179:3306/helmet
+   username: jeong
+   password: jh9014
 
 mybatis:
     type-aliases-package: com.example.mappertut.model

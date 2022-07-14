@@ -13,4 +13,6 @@ public class Helmet {
     private LocalDate helmetBuyDate;
     private Integer helmetPrice;
     private Integer helmetCondition;
+    private Float helmetLatitude;
+    private Float helmetLongitude;
 }

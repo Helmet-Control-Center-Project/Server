@@ -14,7 +14,7 @@ function regit_User_Inf() {
     var userWorkLocation = document.getElementById("userWorkLocation").value;
     
    
-   axios.post("http://localhost:8080/api/user",
+   axios.post("http://220.81.42.179:8080/api/user",
               {
         userName:userName,
         userSsn:userSsn,

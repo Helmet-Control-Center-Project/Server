@@ -77,14 +77,13 @@
         <script>
             let workerData;
 
-            // http://localhost:8080/api/helmet
             function Load_Worker_Inf()
             {
 
 
 
                 axios.get
-                ("http://localhost:8080/api/user/findAll")
+                ("http://220.81.42.179:8080/api/user/findAll")
                     .then(function (response) {
                         workerData=response.data;
                         console.log(response.data);
@@ -118,7 +117,7 @@
                         let user_phone_number = workerData[i].user_phone_number;
                         let user_blood_type = workerData[i].user_blood_type;
                         let user_work_location = workerData[i].user_work_location;
-                        let user_helmet = workerData[i].userHelmet;
+                        let user_helmet = workerData[i].user_work_condition;
                         //--
                         cell1.innerHTML = user_id;
                         cell2.innerHTML = user_name;

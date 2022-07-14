@@ -132,7 +132,7 @@
             function load_Helmet_Inf()
             {
                 axios.get
-                ("http://localhost:8080/api/helmet")
+                ("http://220.81.42.179:8080/api/helmet")
                     .then(function (response) {
                         helmetData=response.data;
                         console.log(response.data);
@@ -226,7 +226,7 @@
             function Load_Worker_Inf()
             {
                 axios.get
-                ("http://localhost:8080/api/user/findAll")
+                ("http://220.81.42.179:8080/api/user/findAll")
                     .then(function (response) {
                         workerData=response.data;
                         console.log(response.data);

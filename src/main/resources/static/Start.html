@@ -11,11 +11,19 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script type="text/javascript" src="assets/js/start.js">
+        </script>
 
     <script>
         function refresh(){  
       $(div.left-box).load(window.location.href + div.left-box);
 }</script>
+       
+        
+        
+       
+ 
     	<style>
         tr, td{
             border-style : solid;
@@ -29,22 +37,14 @@
         }
             div.left-box {
             float:left;
-            width:75%;
+            width:100%;
             border-top: 0.5px solid#888;
             border-bottom: 0px;
             border-right: 0.5px dashed#888;
             border-left: 0px;
             box-sizing: border-box;
         }
-             div.right-box {
-            float:right;
-            width:25%;
-            border-top: 0.5px solid#888;
-            border-bottom: 0px;
-            border-right: 0px;
-            border-left: 0.5px solid#888;
-             box-sizing: border-box;
-        }
+             
             div.work_inst{
             text-align: center;
             border-top: 0px;
@@ -108,7 +108,9 @@
 	<td><strong>SHOCK<br>Information</strong></td>
 	<td><strong>Wearing<br>Information</strong></td>
 	<td><strong>Location<br>Information</strong></td>
-    <td><strong>─────</strong></td>
+    <td><br>
+    <input type="button" value="Search GPS"
+           style="float:right" onclick="Location_Inf();"></td>
     <!-- <input type="button" value="Location_Inf"
            style="float:right" onclick="Location_Inf();">
            -->
@@ -116,40 +118,26 @@
     </tr>
 
     <tbody id="look_inf_list">
-    <!-- 삽입되는 헬멧 리스트 -->
+    <!-- 삽입되는 발생 리스트 -->
 
     </tbody>
     </table>
     </div>
-    <div class='right-box'>
-            
-             <div class='work_inst'>
-              <font size="6em" color="black" align="center" 
-              ><br><strong>Location<br>INF_MAP</strong></font><br><br></div>
-              
-              <div id="map" style="width: 100%; height: 350px;"></div>
-              
-             sdfsdfsdfsdf 
-    </div>
+    
         <script>
             let lookData;
-
-            // http://localhost:8080/api/helmet
+			
             window.onload=function()
             {
-                function makeMap(location_inf_latitude, location_inf_longitude){
-		if (document.getElementById("map")) {
-			document.getElementById("map").innerHTML = "<iframe style=\"width: 500px; height: 464px\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"//maps.google.com/?ll=" + location_inf_latitude + "," + location_inf_longitude + "&z=16&output=embed\"></iframe>"; 
-		}
-	}
+       
                 
 
                 axios.get
-                ("http://localhost:8080/api/감지됐을때")
+                ("http://220.81.42.179:8080/api/live")
                     .then(function (response) {
                         lookData=response.data;
                         console.log(response.data);
-                        makeList();
+                        makeList_start();
                     })
                     .catch(function (error){
 
@@ -157,7 +145,7 @@
                     });
 
             }
-            function makeList() {
+            function makeList_start() {
                 let looklist_tbody = document.getElementById('look_inf_list');
                 if(looklist_tbody.rows.length <1) {
                     for (let i = 0; i < lookData.length; i++) {
@@ -171,25 +159,25 @@
                         let cell6 = row.insertCell(5);
                         let cell7 = row.insertCell(6);
                         //------
-                        let helmetid = lookData[i].helmet_id;
-                        let workernamed = lookData[i].user_name;
-                        let workerlocation = lookData[i].user_work_location;
-                        let shock_inf = lookData[i].shock_inf;
-                        let wearing_inf = lookData[i].wearing_inf;
-                        let location_inf_latitude = lookData[i].location_inf_latitude;
-                        let location_inf_longitude = lookData[i].location_inf_longitude;
+                        let helmetId = lookData[i].helmetId;
+                        let workernamed = lookData[i].userName;
+                        let workerlocation = lookData[i].workLocation;
+                        let shock_inf = lookData[i].shockPosition;
+                        let wearing_inf = lookData[i].wearingInfo;
+                        let location_inf_latitude = lookData[i].locationX;
+                        let location_inf_longitude = lookData[i].locationY;
+						let shock_position = lookData[i].shock
                         //--
-                        cell1.innerHTML = helmetid;
+                        cell1.innerHTML = helmetId;
                         cell2.innerHTML = workernamed;
                         cell3.innerHTML = workerlocation;
-                        cell4.innerHTML = shock_inf;
+                        cell4.innerHTML = shock_inf + " : "+shock_position;
                         cell5.innerHTML = wearing_inf;
                         cell6.innerHTML = location_inf_latitude +
                             "," + location_inf_longitude;
                         cell7.innerHTML =
                             `<input type="button" value="Location_Inf"
-           style="float:right" onclick="Location_Inf(
-${lookData[i].location_inf_latitude, lookData[i].location_inf_longitude});">`;
+           style="float:right" onclick="Location_Inf();">`;
                        }
                 }
                 else if(looklist_tbody>1)
@@ -207,14 +195,7 @@ ${lookData[i].location_inf_latitude, lookData[i].location_inf_longitude});">`;
 
             }
             
-            function Location_Inf(location_inf_latitude,
-                                   location_inf_longitude)
-            {
-                 makeMap(location_inf_latitude,location_inf_longitude);
-                
-            }
-            
-            
+           
             
         </script>
 

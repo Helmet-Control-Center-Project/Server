@@ -5,13 +5,9 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class WearingSensor {
+public class SosSensor {
 
     private String helmetId;
-
-    /* 착용 1, 미착용 0 */
-    private String wearingCondition;
-
+    private Integer SosCondition;
     private LocalDate date;
-
 }

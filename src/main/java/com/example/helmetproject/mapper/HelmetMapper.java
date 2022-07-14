@@ -12,4 +12,6 @@ public interface HelmetMapper {
     void infoInsert(Helmet helmet);
 
     List<Helmet> getHelmetData();
+
+    Helmet getHelmetInfo(String helmetId);
 }

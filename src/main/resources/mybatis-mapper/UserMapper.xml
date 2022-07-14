@@ -14,6 +14,7 @@
         <result property="userBloodType" column="user_blood_type"/>
         <result property="userWorkLocation" column="user_work_location"/>
         <result property="userWorkCondition" column="user_work_condition"/>
+        <result property="userHelmetCondition" column="user_helmet_wearing"/>
     </resultMap>
 
     <!--  노동자 등록  -->
@@ -43,7 +44,7 @@
     <select id="findUser" resultMap="UserInfo">
         SELECT *
         FROM user
-        where user_ssn = #{userSsn}
+        where user_id = #{userId}
     </select>
 
     <!-- 모든 노동자 조회 -->

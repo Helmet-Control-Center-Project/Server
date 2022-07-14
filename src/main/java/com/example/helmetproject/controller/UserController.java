@@ -33,10 +33,10 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/{userSsn}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<User> findUser(
-            @PathVariable("userSsn") String userSsn){
-        return ResponseEntity.status(HttpStatus.OK).body(userService.findUser(userSsn));
+            @PathVariable("userId") Integer userId){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findUser(userId));
     }
 
     @GetMapping("/user/findAll")

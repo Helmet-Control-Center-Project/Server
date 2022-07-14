@@ -11,7 +11,7 @@ function regit_Helmet_Inf() {
     var helmetPrice = document.getElementById("helmet_price").value;
     
    
-   axios.post("http://localhost:8080/api/helmet/registrationr",
+   axios.post("http://220.81.42.179:8080/api/helmet/registrationr",
               {
                   helmetId:helmetId,
                   helmetModelName:helmetModelName,

@@ -13,13 +13,14 @@ function work_Instruct()
     //let po_int;
     //let pointer;
      
-  axios.post(" http://localhost:8080/api/worker",
+  axios.post(" http://220.81.42.179:8080/api/worker",
               {
         helmetId:helmetId,
         userId:userId
     });
                
     alert(helmetId+" 헬멧에 " + userId + " 노동자 등록 완료.");
+    window.location.reload();
      
     /*
     else if(po_int==-1)
@@ -36,7 +37,7 @@ function work_Instruct()
 function work_load()
 {
     axios.get
-    ("http://localhost:8080/api/helmet")
+    ("http://220.81.42.179:8080/api/helmet")
         .then(function (response) {
             helmetData=response.data;
             console.log(response.data);
@@ -46,7 +47,7 @@ function work_load()
             console.log(error);
         });
     axios.get
-    ("http://localhost:8080/api/user/findAll")
+    ("http://220.81.42.179:8080/api/user/findAll")
     .then(function (response) {
         workerData=response.data;
         console.log(response.data);
@@ -56,7 +57,7 @@ function work_load()
         console.log(error);
     });
       axios.get
-                ("http://localhost:8080/api/worker")
+                ("http://220.81.42.179:8080/api/worker")
                     .then(function (response) {
                         roadData=response.data;
                         console.log(response.data);
@@ -90,8 +91,16 @@ function work_Delete() {
     let userId = deletWork;
     console.log( "helmetId" + userId );
     console.log( "deletWork" + deletWork );
-     axios.get("http://localhost:8080/api/worker/delete/" + userId);
+    if (userId == null)
+        {
+            alert("삭제할 작업이 선택되지 않았습니다.");
+        }
+    else{
+     axios.get("http://220.81.42.179:8080/api/worker/delete/" + userId);
 
+     alert("작업자 번호 " + userId + "와 연동된 헬멧 작업 취소 완료");
+    window.location.reload();
+    }
 }
 
 

@@ -31,4 +31,7 @@ public class User {
     /* 노동자 사용 헬멧 */
     private String userWorkCondition;
 
+    /* 노동자 헬멧 착용 여부 */
+    private String userHelmetCondition;
+
 }

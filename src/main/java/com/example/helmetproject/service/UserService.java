@@ -24,8 +24,8 @@ public class UserService {
     }
 
     /* 특정 노동자 조회 */
-    public User findUser(String userSsn){
-        return userMapper.findUser(userSsn);
+    public User findUser(Integer userId){
+        return userMapper.findUser(userId);
     }
 
     /* 노동자 모두 조회 */
